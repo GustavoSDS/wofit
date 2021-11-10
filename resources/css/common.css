@@ -1,0 +1,141 @@
+.text-teal {
+    color: #4dc0b5;
+}
+.text-teal-100 {
+    color: #dfefef;
+}
+
+.text-teal-200 {
+    color: #bfdfdf;
+}
+
+.text-teal-300 {
+    color: #9fcfcf;
+}
+
+.text-teal-400 {
+    color: #7fbfbf;
+}
+
+.text-teal-500 {
+    color: #5fafaf;
+}
+
+.text-teal-600 {
+    color: #3f9f9f;
+}
+
+.text-teal-700 {
+    color: #1f8f8f;
+}
+
+.text-teal-800 {
+    color: #008080;
+}
+
+.text-teal-900 {
+    color: #007070;
+}
+.bg-teal {
+    background-color: #4DC0B5;
+}
+.bg-teal-100 {
+    background-color: #dfefef;
+}
+
+.bg-teal-200 {
+    background-color: #bfdfdf;
+}
+
+.bg-teal-300 {
+    background-color: #9fcfcf;
+}
+
+.bg-teal-400 {
+    background-color: #7fbfbf;
+}
+
+.bg-teal-500 {
+    background-color: #5fafaf;
+}
+
+.bg-teal-600 {
+    background-color: #3f9f9f;
+}
+
+.bg-teal-700 {
+    background-color: #1f8f8f;
+}
+
+.bg-teal-800 {
+    background-color: #008080;
+}
+
+.bg-teal-900 {
+    background-color: #007070;
+}
+
+.hover\:bg-teal-100:hover {
+    background-color: #dfefef;
+}
+
+.hover\:bg-teal-200:hover {
+    background-color: #bfdfdf;
+}
+
+.hover\:bg-teal-300:hover {
+    background-color: #9fcfcf;
+}
+
+.hover\:bg-teal-400:hover {
+    background-color: #7fbfbf;
+}
+
+.hover\:bg-teal-500:hover {
+    background-color: #5fafaf;
+}
+
+.hover\:bg-teal-600:hover {
+    background-color: #3f9f9f;
+}
+
+.hover\:bg-teal-700:hover {
+    background-color: #1f8f8f;
+}
+
+.hover\:bg-teal-800:hover {
+    background-color: #008080;
+}
+
+.hover\:bg-teal-900:hover {
+    background-color: #007070;
+}
+
+.border-teal-600 {
+	--tw-border-opacity: 1;
+	border-color: rgba(0,139,139, var(--tw-border-opacity));
+}
+
+
+.content,
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.centrar {
+    margin: auto;
+}
+
+.class-icons{
+    @apply w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center;
+}
+
+.inputs-datos{
+    @apply w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-none outline-none focus:border-indigo-500;
+}
+
+.centrar-imagen{
+    margin: auto;
+}
+
