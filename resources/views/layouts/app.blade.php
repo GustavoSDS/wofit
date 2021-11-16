@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Gimnasio') }}</title>
+    <title>{{ config('', 'Pagina Principal') }}</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -20,7 +22,6 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ asset('vendor/fontawesome-free/css/all.css')}}"></script>
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 </head>
 
@@ -28,14 +29,14 @@
     <x-jet-banner />
 
     @auth
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen">
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
     @else
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen">
             @livewire('navigation')
 
             <!-- Page Content -->

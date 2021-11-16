@@ -138,4 +138,12 @@
 .centrar-imagen{
     margin: auto;
 }
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    position: relative;
+}
 
