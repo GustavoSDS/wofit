@@ -4,7 +4,6 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
 <x-app-layout>
     <!-- Componente de blade que contiene el titulo, imagen, y clases de estilo para esta pagina -->
     <x-registro-form>
-
         <form action="{{ route('preInscripciones.post') }}" method="POST">
             @csrf
             {{ csrf_field() }}
