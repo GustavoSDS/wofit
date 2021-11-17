@@ -24,12 +24,12 @@ class LoginTest extends TestCase
      /** @test */
      public function authenticated_to_a_user()
      {
-         $user = User::create([
-             "dni" => "41306304",
-             "name" => "Gustavo",
-             "email" => "simondossantos18@mail.com",
-             "password" => "Gustavo123",
-         ]);
+        //  $user = User::create([
+        //      "dni" => "41306304",
+        //      "name" => "Gustavo",
+        //      "email" => "simondossantos18@mail.com",
+        //      "password" => "Gustavo123",
+        //  ]);
 
          $this->get('/login')->assertSee('Login');
          $credentials = [
@@ -38,7 +38,7 @@ class LoginTest extends TestCase
          ];
 
          $response = $this->post('/login', $credentials);
-         $response->assertRedirect('/home');
+         $response->assertRedirect('/admin');
          $this->assertCredentials($credentials);
      }
 

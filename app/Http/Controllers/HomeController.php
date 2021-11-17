@@ -55,10 +55,13 @@ class HomeController extends Controller
 
                 session()->flash('alert', '¡Formulario enviado!');
                 return redirect()->back();
-            } else {
+            } elseif ($condicionalAno) {
                 guardarFormulario($condicionalAno['id'], $request);
 
                 session()->flash('alert', '¡Formulario enviado!');
+                return redirect()->back();
+            } else {
+                session()->flash('alert', '¡Sin vacantes disponible! Diculpe las molestias');
                 return redirect()->back();
             }
         } else {
