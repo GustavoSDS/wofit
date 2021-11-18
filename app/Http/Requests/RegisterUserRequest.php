@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+
 class RegisterUserRequest extends FormRequest
 {
     /**
@@ -33,7 +34,7 @@ class RegisterUserRequest extends FormRequest
         ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
             'dni.required' => 'El DNI es obligatorio',
@@ -42,8 +43,6 @@ class RegisterUserRequest extends FormRequest
             'email.required' => 'El Email es obligatorio',
             'telefono.required' => 'El Telefono es obligatorio',
             'horarios.required' => 'Debe seleccionar minimo 1 horario',
-            'dni.unique:preinscripcion_inscripcions' => 'El DNI ya existe en la base',
-            'email.unique:preinscripcion_inscripcions' => 'El EMAIL ya existe en la base',
         ];
     }
 }
