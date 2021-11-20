@@ -7,7 +7,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Gimnasio: ',
+    'title_prefix' => 'WoFit: ',
     'title_postfix' => '',
 
     /*
@@ -21,12 +21,12 @@ return [
     | Logo
     */
 
-    'logo' => '<b>Gimnasio</b>',
+    'logo' => '<b>WoFit</b>',
     'logo_img' => 'vendor/adminlte/dist/img/favicon.ico',
     'logo_img_class' => 'brand-image bg-white img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'WoFit',
 
     /*
     | User Menu
@@ -71,7 +71,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand ',
@@ -130,15 +130,10 @@ return [
 
     'menu' => [
         // Navbar items:
-        // [
-        //     'type'         => 'navbar-search',
-        //     'text'         => 'search',
-        //     'topnav_right' => true,
-        // ],
-        // [
-        //     'type'         => 'fullscreen-widget',
-        //     'topnav_right' => true,
-        // ],
+        [
+            'type'         => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
 
         // Sidebar items:
         [
@@ -151,7 +146,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Preinscritos',
+            'text' => 'Preinscriptos',
             'icon' => 'fas fa-fw fa-users',
             'icon_color' => 'purple',
             'submenu' => [
@@ -166,7 +161,7 @@ return [
         [
             'text' => 'Fechas',
             'icon' => 'fas fa-fw fa-calendar-alt',
-            'icon_color' => 'white',
+            'icon_color' => 'orange',
             'submenu' => [
                 [
                     'text' => 'Listado',
