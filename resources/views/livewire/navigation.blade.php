@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center border-b-2 border-gray-100 py-3 md:justify-start md:space-x-10">
             <div class="flex justify-start lg:w-0 lg:flex-1">{{-- Logo of page --}}
-                <a href="{{ route('welcome') }}" class="flex items-center justify-center">
+                <a href="{{ route('home') }}" class="flex items-center justify-center">
                     <span class="sr-only">WoFit</span>
                     <img class="h-8 w-auto sm:h-10" src="{{ asset('img/favicon.ico') }}" alt="">
                     <span class="ml-1 font-bold text-xl text-gray-900">WoFit</span>
@@ -54,7 +54,7 @@
             <div class="pt-5 pb-6 px-5">
                 <div class="flex items-center justify-between">
                     <div>
-                        <a href="{{ route('welcome') }}">
+                        <a href="{{ route('home') }}">
                             <img class="h-8 w-auto" src="{{ asset('img/favicon.ico') }}"
                             alt="WoFit">
                         </a>

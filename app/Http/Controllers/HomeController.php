@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
-use App\Http\Requests\Sugestions;
 use App\Models\Preinscripcion_fecha;
 use App\Models\Preinscripcion_inscripcion;
-use App\Models\Suggestion;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -16,47 +13,30 @@ class HomeController extends Controller
         if (auth()->user()) {
             return redirect()->route('admin');
         } else {
-            return view('welcome');
+            return view('home');
         }
-
-        // $condicionalAno = Preinscripcion_fecha::where('ano', '=', date("Y"))
-        //     ->where('activo', '=', 1)
-        //     ->orderBy('mes', 'desc')
-        //     ->first();
-        // $condicionalMes = Preinscripcion_fecha::where('mes', '=', date("m"))
-        //     ->where('activo', '=', 1)
-        //     ->orderBy('mes', 'desc')
-        //     ->first();
-        // if ($condicionalAno) {
-        //     if ($condicionalMes) {
-        //         return $condicionalMes;
-        //     } else {
-        //         return $condicionalAno;
-        //     }
-        // } else {
-        //     return 'Dentro del else';
-        // }
 
     }
 
-    public function preinscripciones(RegisterUserRequest $request)
+    public function preregistration(RegisterUserRequest $request)
     {
-        $condicionalAno = Preinscripcion_fecha::where('ano', '=', date("Y"))
+        $conditionYear = Preinscripcion_fecha::where('ano', '=', date("Y"))
             ->where('activo', '=', 1)
             ->orderBy('mes', 'desc')
             ->first();
-        $condicionalMes = Preinscripcion_fecha::where('mes', '=', date("m"))
+        $conditionMonth = Preinscripcion_fecha::where('mes', '=', date("m"))
             ->where('activo', '=', 1)
             ->orderBy('mes', 'desc')
             ->first();
-        if ($condicionalMes || $condicionalAno) {
-            if ($condicionalMes && $condicionalAno) {
-                guardarFormulario($condicionalMes['id'], $request);
+        if ($conditionMonth || $conditionYear) {
+            if ($conditionMonth && $conditionYear) {
+                saveForm($conditionMonth['id'], $request);
 
                 session()->flash('alert', '¡Formulario enviado!');
                 return redirect()->back();
-            } elseif ($condicionalAno) {
-                guardarFormulario($condicionalAno['id'], $request);
+
+            } elseif ($conditionYear) {
+                saveForm($conditionYear['id'], $request);
 
                 session()->flash('alert', '¡Formulario enviado!');
                 return redirect()->back();
@@ -69,45 +49,19 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
-
-    public function suggestions()
-    {
-        if (auth()->user()) {
-            return redirect()->route('admin');
-        } else {
-            return view('suggestions');
-        }
-    }
-
-    public function post(Sugestions $request)
-    {
-        $sugerencias = $request->except('_token');
-        Suggestion::insert($sugerencias);
-        return redirect()->route('suggestions')->with('message', '¡Sugerencia enviada!');
-    }
 }
 
-function guardarFormulario($codicion, $request)
+function saveForm($condition, $request)
 {
-    $datos = $request->except('_token');
-    $datosHorarios = "";
-    $meses = Preinscripcion_fecha::where('id', '=', $codicion)->firstOrFail();
-    // where("mes", '=', $codicion)->where('activo', '=', 1)->limit(1)->first();
-    foreach ($datos['horarios'] as $dato) {
-        $datosHorarios = $datosHorarios . $dato . " - ";
+    $data = $request->except('_token');
+    $dataMonth = Preinscripcion_fecha::where('id', '=', $condition)->firstOrFail();
+    $dataHo = "";
+    foreach ($data['horarios'] as $dat) {
+        $dataHo = $dataHo . $dat . " - ";
     }
 
-    $datos['horarios'] = $datosHorarios;
-    $datos['preinscripcion_fecha_id'] = $meses['id'];
+    $data['horarios'] = $dataHo;
+    $data['preinscripcion_fecha_id'] = $dataMonth['id'];
 
-    $datosOrdenados['preinscripcion_fecha_id'] = $datos['preinscripcion_fecha_id'];
-    $datosOrdenados['dni'] = $datos['dni'];
-    $datosOrdenados['nombre'] = $datos['nombre'];
-    $datosOrdenados['apellido'] = $datos['apellido'];
-    $datosOrdenados['email'] = $datos['email'];
-    $datosOrdenados['telefono'] = $datos['telefono'];
-    $datosOrdenados['instagram'] = $datos['instagram'];
-    $datosOrdenados['horarios'] = $datos['horarios'];
-
-    Preinscripcion_inscripcion::insert($datosOrdenados);
+    Preinscripcion_inscripcion::insert($data);
 }

@@ -4,12 +4,35 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
 <x-app-layout>
     <!-- Componente de blade que contiene el titulo, imagen, y clases de estilo para esta pagina -->
     <x-registro-form>
-        <form action="{{ route('preInscripciones.post') }}" method="POST">
+        <div class="text-center mb-5">
+            <h1 class="font-bold text-3xl text-gray-900"> Solicitud de turnos
+                <b>WoFit</b> 2021 <br>
+                <span class="text-red-700">-No cambios de turno-</span>
+            </h1>
+            <br>
+            <p class="font-bold uppercase">Ingresa tu información para solicitar turnos</p>
+        </div>
+        <x-alert-form>
+            Gracias por querer formar parte de WoFit. <br>
+            Ni bien tengamos un turno en la franja horaria solicitada nos comunicaremos con usted. <br>
+            El precio de la cuota para el mes de SEPTIEMBRE 2021 es de $2600 pesos.
+        </x-alert-form>
+        <span class="flex -mx-3 mb-2 text-sm">Campos obligatorios <b class="text-red-500 ml-1"> * </b></span>
+
+        <form action="{{ route('preregistration.post') }}" method="POST">
             @csrf
             {{ csrf_field() }}
             <div>
+                <div class="w-2/4">
+                    @error('dni')
+                        <!-- Componente de blade que contiene estilos para los mensajes de errores -->
+                        <x-input-error>
+                            <strong class="py-1 px-2 rounded-md font-light text-sm bg-red-100">¡Revise los campos!</strong>
+                        </x-input-error>
+                    @enderror
+                </div>
                 <div class="block md:flex lg:flex -mx-3">
-                    <div class="w-full lg:w-3/6 md:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
                         <!-- Componente de blade que contiene estilos para los label text -->
                         <x-label for="nombre">Nombre</x-label>
                         </label>
@@ -24,7 +47,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                                 title="Obligatorio. Máximo 20 carácteres. Solo Letras." required />
                         </div>
                     </div>
-                    <div class="w-full lg:w-3/6 md:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
                         <x-label for="apellido">Apellido</x-label>
                         <div class="flex">
                             <div class="class-icons">
@@ -37,18 +60,25 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                     </div>
                 </div>
                 <div class="block md:flex lg:flex -mx-3">
-                    <div class="w-full lg:w-3/6 md:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
-                        <x-label for="dni">DNI</x-label>
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                        <x-label for="dni">DNI </x-label>
+
                         <div class="flex">
                             <div class="class-icons">
                                 <i class="fas fa-keyboard text-lg"></i>
                             </div>
                             <input class="inputs-datos" placeholder="00000000" type="text" id="dni" name="dni"
-                                value="{{ Request::old('dni') }}" required maxlength="8" pattern="[0-9]+"
-                                title="Obligatorio. 8 números requeridos" />
+                                value="{{ Request::old('dni') }}" required maxlength="8" minlength="8"
+                                pattern="[0-9]+" title="Obligatorio. 8 números requeridos" />
                         </div>
+                        @error('dni')
+                            <!-- Componente de blade que contiene estilos para los mensajes de errores -->
+                            <x-input-error>
+                                {{ $message }}
+                            </x-input-error>
+                        @enderror
                     </div>
-                    <div class="w-full lg:w-3/6 md:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
                         <x-label for="telefono">Teléfono</x-label>
                         <div class="flex">
                             <div class="class-icons">
@@ -61,13 +91,8 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                     </div>
                 </div>
                 <!-- Muestra una alerta de error despues de la validacion de los datos del formulario -->
-                <div class="">
-                    @error('dni')
-                        <!-- Componente de blade que contiene estilos para los mensajes de errores -->
-                        <x-input-error>
-                            {{ $message }}
-                        </x-input-error>
-                    @enderror
+                <div class="w-2/4">
+
                 </div>
 
                 <div class="flex -mx-3">
@@ -111,9 +136,10 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                             <div class="grid grid-cols-5 gap-2">
                                 @foreach (horarios as $horario)
                                     <div class="col-span-1">
-                                        <label for="horarios[]"
-                                            class="inline-flex items-center text-sm font-semibold">
-                                            <input type="checkbox" name="horarios[]" value="{{ $horario }}" {{ !empty(old('horarios')) && in_array($horario, old('horarios')) ? 'checked' : '' }} class="cursor-pointer h-5 w-5 text-teal-600 rounded-full">
+                                        <label for="horarios[]" class="inline-flex items-center text-sm font-semibold">
+                                            <input type="checkbox" name="horarios[]" value="{{ $horario }}"
+                                                {{ !empty(old('horarios')) && in_array($horario, old('horarios')) ? 'checked' : '' }}
+                                                class="cursor-pointer h-5 w-5 text-teal-600 rounded-full">
                                             <span class="ml-1 mr-1 text-gray-700">{{ $horario }}</span>
                                         </label>
                                     </div>
@@ -130,9 +156,11 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
 
                 <div class="flex -mx-3">
                     <div class="flex items-center justify-center w-full px-3 mb-14">
-                        <button class="max-w-xs w-60 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
+                        <button
+                            class="max-w-xs w-60 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
                             <!-- Heroicon name: solid/check -->
-                            <svg class="h-6 w-6 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
