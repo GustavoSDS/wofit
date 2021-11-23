@@ -7,7 +7,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'WoFit: ',
+    'title_prefix' => 'WoFit | ',
     'title_postfix' => '',
 
     /*
@@ -54,12 +54,12 @@ return [
     | Authentication Views Classes
     */
 
-    'classes_auth_card' => 'bg-gradient-dark',
-    'classes_auth_header' => '',
-    'classes_auth_body' => 'bg-gradient-dark',
+    'classes_auth_card' => '',
+    'classes_auth_header' => 'bg-gradient-info',
+    'classes_auth_body' => '',
     'classes_auth_footer' => 'text-center',
-    'classes_auth_icon' => 'fa-fw text-light',
-    'classes_auth_btn' => 'btn-flat btn-light',
+    'classes_auth_icon' => 'fa-lg text-info',
+    'classes_auth_btn' => 'btn-flat btn-primary',
 
     /*
     | Admin Panel Classes
@@ -108,13 +108,13 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/admin',
+    'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
-    'profile_url' => true,
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'profile_url' => false,
+    // 'password_reset_url' => 'password.reset',
+    // 'password_email_url' => 'password.email',
 
     /*
     | Laravel Mix

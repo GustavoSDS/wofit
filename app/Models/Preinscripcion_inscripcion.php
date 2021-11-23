@@ -18,7 +18,7 @@ class Preinscripcion_inscripcion extends Model
 
     public function fechas()
     {
-        return $this->belongsTo(Preinscripcion_fecha::class);
+        return $this->belongsTo('App\Models\Preinscripcion_fecha', 'preinscripcion_fecha_id');
     }
 
     public function getFullNameAttribute()

@@ -1,6 +1,6 @@
-<div class="relative bg-white" x-data="{ open: false }">
+<div class="relative bg-white shadow-lg" x-data="{ open: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex justify-between items-center border-b-2 border-gray-100 py-3 md:justify-start md:space-x-10">
+        <div class="flex justify-between items-center border-b-2 border-gray-200 py-3 md:justify-start md:space-x-10">
             <div class="flex justify-start lg:w-0 lg:flex-1">{{-- Logo of page --}}
                 <a href="{{ route('home') }}" class="flex items-center justify-center">
                     <span class="sr-only">WoFit</span>
@@ -22,16 +22,16 @@
                 </button>
             </div>
             <nav class="hidden md:flex space-x-10">
-                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900 border-b-2 hover:border-blue-600">
                     Sugerencias
                 </a>
-                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900 border-b-2 hover:border-blue-600">
                     Nosotros
                 </a>
-                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900 border-b-2 hover:border-blue-600">
                     Contacto
                 </a>
-                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900 border-b-2 hover:border-blue-600">
                     Redes
                 </a>
             </nav>

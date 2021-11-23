@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="nombre">Nombre</label>
                                     <input class="form-control border rounded w-full py-2 px-3" type="text" name="nombre"
-                                        placeholder="Pre- Inscripciones Septiembre" required>
+                                        placeholder="Preinscripciones Example" required>
                                 </div>
                             </div>
                         </div>

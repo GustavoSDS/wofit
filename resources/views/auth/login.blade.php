@@ -8,16 +8,16 @@
 
 @php($login_url = View::getSection('login_url') ?? config('adminlte.login_url', 'login'))
 @php($register_url = View::getSection('register_url') ?? config('adminlte.register_url', 'register'))
-@php($password_reset_url = View::getSection('password_reset_url') ?? config('adminlte.password_reset_url', 'password/reset'))
+{{-- @php($password_reset_url = View::getSection('password_reset_url') ?? config('adminlte.password_reset_url', 'password/reset')) --}}
 
 @if (config('adminlte.use_route_url', false))
     @php($login_url = $login_url ? route($login_url) : '')
     @php($register_url = $register_url ? route($register_url) : '')
-    @php($password_reset_url = $password_reset_url ? route($password_reset_url) : '')
+    {{-- @php($password_reset_url = $password_reset_url ? route($password_reset_url) : '') --}}
 @else
     @php($login_url = $login_url ? url($login_url) : '')
     @php($register_url = $register_url ? url($register_url) : '')
-    @php($password_reset_url = $password_reset_url ? url($password_reset_url) : '')
+    {{-- @php($password_reset_url = $password_reset_url ? url($password_reset_url) : '') --}}
 @endif
 
 @section('auth_header', __('adminlte::adminlte.login_message'))
@@ -28,11 +28,12 @@
 
         {{-- Dni field --}}
         <div class="input-group mb-3">
-            <input type="number" name="dni" class="form-control {{ $errors->has('dni') ? 'is-invalid' : '' }}"
-                value="{{ old('dni') }}" placeholder="{{ __('Dni') }}" autofocus>
-            <div class="input-group-user">
+            <input type="text" name="dni" class="form-control {{ $errors->has('dni') ? 'is-invalid' : '' }}"
+                value="{{ old('dni') }}" placeholder="{{ __('Dni') }}" required maxlength="8" minlength="8"
+                pattern="[0-9]+" autofocus>
+            <div class="input-group-append">
                 <div class="input-group-text">
-                    <span class="fas fa-solid fa-key {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                    <span class="fas fa-solid fa-key py-1 {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
             @if ($errors->has('dni'))
@@ -60,13 +61,13 @@
 
         {{-- Login field --}}
         <div class="row">
-            <div class="col-7">
+            {{-- <div class="col-7">
                 <div class="icheck-primary">
                     <input type="checkbox" name="remember" id="remember">
                     <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
                 </div>
-            </div>
-            <div class="col-5">
+            </div> --}}
+            <div class="col-5 mx-auto mt-2">
                 <button type=submit
                     class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                     <span class="fas fa-sign-in-alt"></span>

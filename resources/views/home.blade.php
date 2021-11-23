@@ -139,7 +139,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                                         <label for="horarios[]" class="inline-flex items-center text-sm font-semibold">
                                             <input type="checkbox" name="horarios[]" value="{{ $horario }}"
                                                 {{ !empty(old('horarios')) && in_array($horario, old('horarios')) ? 'checked' : '' }}
-                                                class="cursor-pointer h-5 w-5 text-teal-600 rounded-full">
+                                                class="cursor-pointer h-5 w-5 bg-teal-300 text-teal-600 rounded-full">
                                             <span class="ml-1 mr-1 text-gray-700">{{ $horario }}</span>
                                         </label>
                                     </div>
@@ -157,7 +157,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                 <div class="flex -mx-3">
                     <div class="flex items-center justify-center w-full px-3 mb-14">
                         <button
-                            class="max-w-xs w-60 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
+                            class="max-w-xs w-60 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
                             <!-- Heroicon name: solid/check -->
                             <svg class="h-6 w-6 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -169,8 +169,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                     </div>
                 </div>
 
-                <div class="bg-teal-100 border-t border-none text-gray-600 px-4 py-2" role="alert">
-                    {{-- <p class="font-bold">Nota:</p> --}}
+                <div class="bg-teal-300 border-t border-none text-gray-900 px-4 py-2" role="alert">
                     <p class="text-sm"> * Esta solicitud esta sujeta a aprobación. Ni bien se libere
                         un cupo en el
                         horario

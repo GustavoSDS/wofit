@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Preinscripcion_fecha;
 use App\Models\Preinscripcion_inscripcion;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\VarDumper;
 use Yajra\DataTables\Facades\DataTables;
 
 use function Ramsey\Uuid\v1;
@@ -17,8 +19,18 @@ class PreinscriptsController extends Controller
      */
     public function index()
     {
-        $inscripts = Preinscripcion_inscripcion::all();
-        return view('admin.preinscripts.index', compact('inscripts'));
+        $fechas = Preinscripcion_inscripcion::all();
+        $fecha = [];
+        foreach ($fechas as $key) {
+            $fecha[] = $key->fechas->id;
+        }
+        $fecha = array_unique($fecha);
+        // return $fecha;
+
+        return view('admin.preinscripts.index', [
+            'inscripts' => $fecha,
+        ]);
+
     }
 
     /**
@@ -92,12 +104,12 @@ class PreinscriptsController extends Controller
     // Function Datatables
     public function dataTable()
     {
-        return DataTables::of(Preinscripcion_inscripcion::select('id', 'dni', 'nombre', 'email', 'activo'))
+        return DataTables::of(Preinscripcion_inscripcion::select('preinscripcion_fecha_id', 'dni', 'nombre', 'email', 'activo'))
             ->editColumn('nombre', function (Preinscripcion_inscripcion $preinscript) {
                 return $preinscript->full_name;
             })
-            // ->addColumn('btn', 'admin.dates.dataTable.btn')
-            // ->rawColumns(['btn'])
+            ->addColumn('btn', 'admin.preinscripts.btn.btn')
+            ->rawColumns(['btn'])
             ->toJson();
     }
 }

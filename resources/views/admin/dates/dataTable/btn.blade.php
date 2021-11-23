@@ -4,18 +4,17 @@
     <div class="flex -mx-3">
         <div class="w-2/6 h-full">
             <a title="Editar" href="{{ route('dates.edit', $id) }}">
-                <span class="t">
-                    <i class="fas fa-edit hover:scale-125 text-md"></i></span>
+                <span><i class="hover:text-blue-700 text-blue-600 fas fa-edit hover:scale-125 text-md"></i></span>
             </a>
         </div>
         <div class="w-2/6 h-4">
             <a title="Ver" href="{{ route('dates.show', $id) }}">
-                <span class="te"><i class="fas fa-eye hover:scale-125 text-md"></i></span>
+                <span><i class="hover:text-green-700 text-green-600 fas fa-eye hover:scale-125 text-md"></i></span>
             </a>
         </div>
         <div class="w-2/6 h-4">
             <button title="Eliminar" onclick="borrarCiclo()">
-                <span class=""><i class="fas fa-trash hover:scale-125 text-md"></i></span>
+                <span class=""><i class="hover:text-red-700 text-red-600 fas fa-trash hover:scale-125 text-md"></i></span>
             </button>
         </div>
     </div>

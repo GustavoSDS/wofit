@@ -19,13 +19,13 @@
             <div class="row align-items-center">
                 <div class="col">
                     <input type="text"
-                        class="px-4 py-2 w-4/5 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-200 filter-input"
+                        class="px-4 py-1 w-4/5 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 filter-input"
                         placeholder="Buscar por nombre" data-column="4" />
                 </div>
                 <div class="col text-center">
                     <form class="form-inline">
                         <select data-column="4"
-                            class="mx-auto mt-1 w-4/5 py-2 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 filter-select">
+                            class="mx-auto mt-1 w-4/5 py-1 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-blue-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 filter-select">
                             <option value="">Seleccionar mes </option>{{-- Dates name month of databases --}}
                             @foreach ($dateName as $name)
                                 <option value="{{ $name }}">{{ $name }}</option>
@@ -35,14 +35,16 @@
                 </div>
 
                 <div class="col text-right">
-                    <a href="{{ route('dates.create') }}" class="btn btn-outline mx-auto">Crear
-                        ciclo <i class="ml-2 fas fa-plus"></i>
-                    </a>
+                    <x-jet-button class="bg-white hover:text-white shadow-sm">
+                        <a href="{{ route('dates.create') }}">Crear
+                            ciclo <i class="ml-2 fas fa-plus"></i>
+                        </a>
+                    </x-jet-button>
                 </div>
 
             </div>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive mt-4">
             <table class="table align-items-center table-light table-hover hover row-border order-column" id="user-table">
                 <thead class="thead-dark">
                     <tr>

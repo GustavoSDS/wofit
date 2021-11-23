@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('', 'Welcome') }}</title>
+    <title>{{ config('', 'Preinscripción a Turnos') }}</title>
 
     <!-- favicon -->
     <link rel="icon" href="{{ asset('img/favicon.ico') }}">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap">
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -26,43 +28,21 @@
 </head>
 
 <body class="font-sans antialiased">
-    <x-jet-banner />
 
-    @auth
-        <div class="min-h-screen">
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    @else
-        <div class="min-h-screen">
+    <div class="min-h-screen">
+        @auth
+        @else
             @livewire('navigation')
+        @endauth
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    @endauth
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+    </div>
 
     @stack('modals')
     @livewireScripts
-    @auth
-    @else
-        {{-- <script>
-            Swal.fire({
-                title: '<strong>PÁGINA EN <u>DESARROLLO!</u></strong>',
-                icon: 'info',
-                html: 'Puedes dejar tus <b>opiniones</b> y <b>comentarios</b> en el menú de ' +
-                    '<a class="text-blue-500" href="{{ route('suggestions') }}">Sugerencias!</a> ',
-                focusConfirm: false,
-                confirmButtonText: '<i class="fa fa-thumbs-up"></i> Ok!',
-                confirmButtonColor: '#3085d6',
-            });
-        </script> --}}
-    @endauth
-
 
 </body>
 
