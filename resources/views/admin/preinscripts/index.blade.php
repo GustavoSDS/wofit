@@ -65,7 +65,7 @@
                 processing: true,
                 serverSider: true,
                 dom: "Bfrtip",
-                ajax: '{!! route('PreinscriptdataTable', $inscripts) !!}',
+                ajax: '{!! route('PreinscriptdataTable') !!}',
                 columns: [
                     // { data: 'preinscripcion_fecha_id'},
                     { data: 'dni'                    },
