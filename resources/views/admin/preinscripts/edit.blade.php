@@ -31,7 +31,7 @@
                         Ingresa la informatión para actualizar
                     </h6>
                     <div>
-                        <div class="grid-cols-4 gap-1-">
+                        <div class="grid-cols-4 gap-2">
                             <div class="col-span-1 flex mb-2">
                                 <div class="w-2/4">
                                     <div class="flex">
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex mb-2">
-                                <div class="flex items-center w-full">
+                                <div class="flex mx-auto">
                                     <x-jet-label class="mrl2">Estado Preinscripto</x-jet-label>
                                     {{-- <x-jet-input class="w-4/5 text-center" value="{{$date->activo == 1 ? 'Aceptado' : 'Pendiente'}}" placeholder="{{ $date->activo ? 'Aceptado' : 'Pendiente'}}" /> --}}
                                     <select name="" id="">
