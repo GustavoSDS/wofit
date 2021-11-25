@@ -25,12 +25,8 @@ class PreinscriptsController extends Controller
         }
 
         $fecha = array_unique($fecha);
-        // return $fecha;
 
-        return view('admin.preinscripts.index', [
-        'inscripts' => $fecha,
-        ]);
-
+        return view('admin.preinscripts.index', compact('inscripts'));
     }
 
     /**

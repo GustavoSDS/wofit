@@ -15,12 +15,6 @@ class HomeController extends Controller
         } else {
             return view('home');
         }
-        // $conditionYear = Preinscripcion_fecha::where([['ano', '=', date("Y")] ,['activo', '=', 1]])
-        // ->orderBy('ano', 'desc')->first();
-        // $conditionMonth = Preinscripcion_fecha::where([['ano', '=', date("Y")],['mes', '=', date("m")] ,['activo', '=', 1]])
-        // ->orderBy('mes', 'desc')->first();
-
-        // return [$conditionMonth, $conditionYear];
 
     }
 
