@@ -75,8 +75,8 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex mb-2">
-                                <div class="flex justify-center items-center w-full">
-                                    <x-jet-label class="">Estado Preinscripto</x-jet-label>
+                                <div class="flex items-center w-full">
+                                    <x-jet-label class="mrl2">Estado Preinscripto</x-jet-label>
                                     {{-- <x-jet-input class="w-4/5 text-center" value="{{$date->activo == 1 ? 'Aceptado' : 'Pendiente'}}" placeholder="{{ $date->activo ? 'Aceptado' : 'Pendiente'}}" /> --}}
                                     <select name="" id="">
                                         @if ($date->activo==1)
