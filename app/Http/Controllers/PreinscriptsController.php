@@ -19,14 +19,16 @@ class PreinscriptsController extends Controller
      */
     public function index()
     {
-        // $fechas = Preinscripcion_inscripcion::all();
-        // foreach ($fechas as $clave => $valor) {
-        //     $fecha[$valor->fechas->id] = $valor->fechas->nombre;
-        // }
+        $fechas = Preinscripcion_inscripcion::all();
+        foreach ($fechas as $clave => $valor) {
+            $fecha[$valor->fechas->id] = $valor->fechas->nombre;
+        }
 
-        // $fecha = array_unique($fecha);
+        $fecha = array_unique($fecha);
 
-        return view('admin.preinscripts.index');
+        return view('admin.preinscripts.index', [
+            'inscripts' => $fecha
+        ]);
     }
 
     /**

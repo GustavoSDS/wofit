@@ -24,11 +24,11 @@
                         <select
                             class="w-3/5 mx-auto py-1 px-2 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 filter-select">
                             <option value="">Todos</option>
-                            {{-- @foreach ($inscripts as $clave => $valor)
+                            @foreach ($inscripts as $clave => $valor)
                                     <option value="{{$clave}}">
                                         {{ $valor }}
                                     </option>
-                            @endforeach --}}
+                            @endforeach
 
                         </select>
                     </form>
