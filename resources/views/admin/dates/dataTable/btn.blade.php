@@ -8,9 +8,15 @@
             </a>
         </div>
         <div class="w-2/6 h-4">
-            <a title="Ver" href="{{ route('dates.show', $id) }}">
+            @if ($activo==1)
+            <a title="Ver" href="{{ route('preinscripts.index') }}">
                 <span><i class="hover:text-green-700 text-green-600 fas fa-eye hover:scale-125 text-md"></i></span>
             </a>
+        @else
+            {{-- <a title="Ver" href="{{ route('preinscripts.index') }}"> --}}
+                <span><i class="hover:text-gray-700 text-gray-600 fas fa-eye hover:scale-125 text-md"></i></span>
+            {{-- </a> --}}
+        @endif
         </div>
         <div class="w-2/6 h-4">
             <button title="Eliminar" onclick="borrarCiclo()">

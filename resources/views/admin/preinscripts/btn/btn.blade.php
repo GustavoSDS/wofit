@@ -1,4 +1,4 @@
- {{-- <div class="flex -mx-3">
+ <div class="flex -mx-3">
      <div class="w-2/6 h-full">
          <a title="Editar" href="{{ route('preinscripts.edit', $id) }}">
              <span>
@@ -10,4 +10,4 @@
              <span><i class="hover:text-green-700 text-green-600 fas fa-eye hover:scale-125 text-md"></i></span>
          </a>
      </div>
- </div> --}}
+ </div>

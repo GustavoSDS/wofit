@@ -10,10 +10,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="row mx-auto align-items-center">
-                    <div class="col-5">
+                    <div class="col-7">
                         <h3
                             class="lg:text-2xl md:text-xl -left-4 py-2 px-2 font-bold leading-7 text-gray-800 uppercase text-center sm:text-lg sm:truncate border-b-2 border-blue-400">
-                            Editar Ciclo</h3>
+                            Editar Estado del Preinscripto</h3>
                     </div>
                     <div class="col text-right">
                         <div class="transform hover:scale-110 m-1 inline-block">
@@ -28,38 +28,56 @@
                     @method('PUT')
                     @csrf
                     <h6 class="w-full text-gray-800 text-center text-base mb-8">
-                        Ingresa la informatión para actualizar éste Ciclo</h6>
-                    <div class="pl-lg-4">
-                        <div class="row mt-5 mb-2">
-                            <div class="mx-auto col-lg-5">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="nombre">Nombre</label>
-                                    <input class="form-control border rounded w-full py-2 px-3" type="text" name="nombre"
-                                        value="{{ $date->nombre }}" required>
+                        Ingresa la informatión para actualizar
+                    </h6>
+                    <div>
+                        <div class="grid-cols-4 gap-1-">
+                            <div class="col-span-1 flex mb-2">
+                                <div class="w-2/4">
+                                    <div class="flex">
+                                        <x-jet-label class="w-2/5">Nombres</x-jet-label>
+                                        <x-jet-input class="w-4/5" disabled value="{{$date->nombre}}" />
+                                    </div>
+                                </div>
+                                <div class="w-2/4">
+                                    <div class="flex">
+                                        <x-jet-label class="w-2/5">Apellidos</x-jet-label>
+                                        <x-jet-input class="w-4/5" disabled value="{{$date->apellido}}" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="mx-auto col-lg-4">
-                                <div class="form-group">
-                                    @php
-                                        $fech = $date->fulldate;
-                                    @endphp
-                                    <label class="form-control-label" for="date">Fecha: <span
-                                            class="font-normal text-sm">{{ $date->fulldate }}</span></label>
-                                    <input class="border rounded w-full py-2 px-3" type="date" value="{{ $fech }}"
-                                        name="date" required>
+                            <div class="col-span-1 flex mb-2">
+                                <div class="w-2/4">
+                                    <div class="flex">
+                                        <x-jet-label class="w-2/5">DNI</x-jet-label>
+                                        <x-jet-input class="w-4/5" disabled value="{{$date->dni}}" />
+                                    </div>
+                                </div>
+                                <div class="w-2/4">
+                                    <div class="flex">
+                                        <x-jet-label class="w-2/5">Email</x-jet-label>
+                                        <x-jet-input class="w-4/5" disabled value="{{$date->email}}" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="mx-auto col-lg-4">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="activo">Activo</label>
-                                    <select class="form-control" name="activo" id="activo">
-                                        <option value="1">Si</option>
-                                        <option value="0">No</option>
-                                    </select>
+                            <div class="col-span-1 flex mb-2">
+                                <div class="w-2/4">
+                                    <div class="flex">
+                                        <x-jet-label class="w-2/5">Telefono</x-jet-label>
+                                        <x-jet-input class="w-4/5" disabled value="{{$date->telefono}}" />
+                                    </div>
+                                </div>
+                                <div class="w-2/4">
+                                    <div class="flex">
+                                        <x-jet-label class="w-2/5">Instagram</x-jet-label>
+                                        <x-jet-input class="w-4/5" disabled value="{{$date->instagram}}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-1 flex mb-2"> 
+                                <div class="flex justify-center items-center">
+                                    <x-jet-label class="w-2/5">Estado Preinscripto</x-jet-label>
+                                    <x-jet-input class="w-4/5 text-center" value="{{$date->activo == 1 ? 'Aceptado' : 'Pendiente'}}" placeholder="{{ $date->activo ? 'Aceptado' : 'Pendiente'}}" />
                                 </div>
                             </div>
                         </div>

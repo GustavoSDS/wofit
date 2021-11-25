@@ -132,7 +132,7 @@
 }
 
 .inputs-datos{
-    @apply w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-none outline-none focus:border-indigo-500;
+    @apply w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-none outline-none focus:border-indigo-500 text-gray-900;
 }
 
 .centrar-imagen{

@@ -15,20 +15,23 @@ class HomeController extends Controller
         } else {
             return view('home');
         }
+        // $conditionYear = Preinscripcion_fecha::where([['ano', '=', date("Y")] ,['activo', '=', 1]])
+        // ->orderBy('ano', 'desc')->first();
+        // $conditionMonth = Preinscripcion_fecha::where([['ano', '=', date("Y")],['mes', '=', date("m")] ,['activo', '=', 1]])
+        // ->orderBy('mes', 'desc')->first();
+
+        // return [$conditionMonth, $conditionYear];
 
     }
 
     public function preregistration(RegisterUserRequest $request)
     {
-        $conditionYear = Preinscripcion_fecha::where('ano', '=', date("Y"))
-            ->where('activo', '=', 1)
-            ->orderBy('mes', 'desc')
-            ->first();
-        $conditionMonth = Preinscripcion_fecha::where('mes', '=', date("m"))
-            ->where('activo', '=', 1)
-            ->orderBy('mes', 'desc')
-            ->first();
-        if ($conditionMonth || $conditionYear) {
+        $conditionYear = Preinscripcion_fecha::where([['ano', '=', date("Y")] ,['activo', '=', 1]])
+        ->orderBy('ano', 'desc')->first();
+        $conditionMonth = Preinscripcion_fecha::where([['ano', '=', date("Y")],['mes', '=', date("m")] ,['activo', '=', 1]])
+        ->orderBy('mes', 'desc')->first();
+
+        if ($conditionMonth && $conditionYear) {
             if ($conditionMonth && $conditionYear) {
                 saveForm($conditionMonth['id'], $request);
 

@@ -34,7 +34,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                 <div class="block md:flex lg:flex -mx-3">
                     <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
                         <!-- Componente de blade que contiene estilos para los label text -->
-                        <x-label for="nombre">Nombre</x-label>
+                        <x-label for="nombre">Nombres</x-label>
                         </label>
                         <div class="flex">
                             <!-- Class-icons definida en el archivo common.css con los estilos-->
@@ -42,18 +42,18 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                                 <i class="fas fa-user text-lg"></i>
                             </div>
                             <!-- Componente de blade que contiene estilos para los inputs de datos personales-->
-                            <input class="inputs-datos" placeholder="John" name="nombre" type="text"
+                            <input class="inputs-datos form-input" placeholder="John" name="nombre" type="text"
                                 value="{{ Request::old('nombre') }}" maxlength="20" pattern="[A-Za-z ]+"
                                 title="Obligatorio. Máximo 20 carácteres. Solo Letras." required />
                         </div>
                     </div>
                     <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
-                        <x-label for="apellido">Apellido</x-label>
+                        <x-label for="apellido">Apellidos</x-label>
                         <div class="flex">
                             <div class="class-icons">
                                 <i class="fas fa-user-plus text-lg"></i>
                             </div>
-                            <input class="inputs-datos" placeholder="Smith" type="text" name="apellido" maxlength="30"
+                            <input class="inputs-datos form-input" placeholder="Smith" type="text" name="apellido" maxlength="30"
                                 value="{{ Request::old('apellido') }}" required pattern="[A-Za-z ]+"
                                 title="Obligatorio. Máximo 30 carácteres. Solo Letras." />
                         </div>
@@ -67,7 +67,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                             <div class="class-icons">
                                 <i class="fas fa-keyboard text-lg"></i>
                             </div>
-                            <input class="inputs-datos" placeholder="00000000" type="text" id="dni" name="dni"
+                            <input class="inputs-datos  form-input" placeholder="00000000" type="text" id="dni" name="dni"
                                 value="{{ Request::old('dni') }}" required maxlength="8" minlength="8"
                                 pattern="[0-9]+" title="Obligatorio. 8 números requeridos" />
                         </div>
@@ -84,7 +84,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                             <div class="class-icons">
                                 <i class="fas fa-phone-square text-lg"></i>
                             </div>
-                            <input class="inputs-datos" placeholder="37640000" type="tel" pattern="[0-9]+"
+                            <input class="inputs-datos  form-input" placeholder="37640000" type="tel" pattern="[0-9]+"
                                 minlength="10" maxlength="12" name="telefono" value="{{ Request::old('telefono') }}"
                                 required title="Obligatorio. Sólo números." />
                         </div>
@@ -102,7 +102,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                             <div class="class-icons">
                                 <i class="fas fa-envelope-open-text text-lg"></i>
                             </div>
-                            <input class="inputs-datos" placeholder="johnsmith@example.com" type="email"
+                            <input class="inputs-datos  form-input" placeholder="johnsmith@example.com" type="email"
                                 id="instagram" name="email" value="{{ Request::old('email') }}" required />
                         </div>
                         @error('email')
@@ -120,7 +120,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                             <div class="class-icons">
                                 <i class="fab fa-instagram text-lg"></i>
                             </div>
-                            <input class="inputs-datos" placeholder="@johnsmithexample" type="text"
+                            <input class="inputs-datos  form-input" placeholder="@johnsmithexample" type="text"
                                 value="{{ Request::old('instagram') }}" name="instagram" />
                         </div>
                     </div>
@@ -139,11 +139,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                                         <label for="horarios[]" class="inline-flex items-center text-sm font-semibold">
                                             <input type="checkbox" name="horarios[]" value="{{ $horario }}"
                                                 {{ !empty(old('horarios')) && in_array($horario, old('horarios')) ? 'checked' : '' }}
-<<<<<<< HEAD:resources/views/home.blade.php
-                                                class="cursor-pointer h-5 w-5 bg-teal-300 text-teal-600 rounded-full">
-=======
-                                                class="cursor-pointer h-5 w-5 text-teal-600 rounded-full">
->>>>>>> 735a9f408034b1ba28f32b09a11c32c725adee5c:resources/views/home.blade.php
+                                                class="bg-blue-300 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0  focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer h-5 w-5">
                                             <span class="ml-1 mr-1 text-gray-700">{{ $horario }}</span>
                                         </label>
                                     </div>
@@ -160,14 +156,9 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
 
                 <div class="flex -mx-3">
                     <div class="flex items-center justify-center w-full px-3 mb-14">
-                        <button
-<<<<<<< HEAD:resources/views/home.blade.php
-                            class="max-w-xs w-60 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
-=======
-                            class="max-w-xs w-60 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
->>>>>>> 735a9f408034b1ba28f32b09a11c32c725adee5c:resources/views/home.blade.php
+                        <button class="max-w-xs w-48 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:text-gray-900 bg-gradient-to-r from-blue-300 to-blue-400 hover:from-blue-400 hover:to-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
                             <!-- Heroicon name: solid/check -->
-                            <svg class="h-6 w-6 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24"
+                            <svg class="h-6 w-6 mr-2 text-gray-900" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />

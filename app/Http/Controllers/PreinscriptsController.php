@@ -20,15 +20,15 @@ class PreinscriptsController extends Controller
     public function index()
     {
         $fechas = Preinscripcion_inscripcion::all();
-        $fecha = [];
-        foreach ($fechas as $key) {
-            $fecha[] = $key->fechas->id;
+        foreach ($fechas as $clave => $valor) {
+            $fecha[$valor->fechas->id] = $valor->fechas->nombre;
         }
+
         $fecha = array_unique($fecha);
         // return $fecha;
 
         return view('admin.preinscripts.index', [
-            'inscripts' => $fecha,
+        'inscripts' => $fecha,
         ]);
 
     }
@@ -75,7 +75,8 @@ class PreinscriptsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $date = Preinscripcion_inscripcion::findOrFail($id);
+        return view('admin.preinscripts.edit', compact('date'));
     }
 
     /**
@@ -104,10 +105,7 @@ class PreinscriptsController extends Controller
     // Function Datatables
     public function dataTable()
     {
-        return DataTables::of(Preinscripcion_inscripcion::select('preinscripcion_fecha_id', 'dni', 'nombre', 'email', 'activo'))
-            ->editColumn('nombre', function (Preinscripcion_inscripcion $preinscript) {
-                return $preinscript->full_name;
-            })
+        return DataTables::of(Preinscripcion_inscripcion::select('id', 'preinscripcion_fecha_id', 'dni', 'nombre', 'apellido' , 'email', 'activo'))
             ->addColumn('btn', 'admin.preinscripts.btn.btn')
             ->rawColumns(['btn'])
             ->toJson();

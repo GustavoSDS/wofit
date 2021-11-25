@@ -50,59 +50,19 @@
             processing: true,
             serverSider: true,
             ajax: '{!! route('dataTableInscriptos', $date->id) !!}',
-            columns: [{
-                    data: 'nombre'
-                },
-                {
-                    data: 'apellido'
-                },
-                {
-                    data: 'dni'
-                },
-                {
-                    data: 'email'
-                },
-                {
-                    data: 'telefono'
-                },
-                {
-                    data: 'instagram'
-                },
-            ],
-            // merge
-            "columnDefs": [{
-                    "render": function(data, type, row) {
-                        return row['nombre'] + " " + row['apellido'];
-                    },
-                    "targets": 0
-                },
-                {
-                    "visible": false,
-                    "targets": [1]
-                }
+            columns: [
+                {"render": function(data, type, row) {
+                    return row['nombre'] + " " + row['apellido'];
+                }},
+                // {data: 'apellido' },
+                {data: 'dni'      },
+                {data: 'email'    },
+                {data: 'telefono' },
+                {data: 'instagram'},
             ],
             "pageLength": 10,
             "dom": 'lrtip',
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json",
-                "lengthMenu": "Mostrar " +
-                    `<select class="custom-select custom-select-sm form-control form-control-sm">
-                <option value='10'>10</option>
-                <option value='25'>25</option>
-                <option value='50'>50</option>
-                <option value="100">100</option>
-                <option value="-1">Todos</option>
-            </select>` +
-                    " registros por página",
-                "zeroRecords": "Nada encontrado - lo siento",
-                "info": "Mostrando la _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles",
-                "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                'search': 'Buscar',
-                'paginate': {
-                    'next': 'Siguiente',
-                    'previous': 'Anterior',
-                }
+           
             }
         });
     });

@@ -12,21 +12,24 @@
             <h2 class="text-2xl text-center font-semibold uppercase">Listado total Preinscriptos</h2>
             <div class="flex mt-4 px-3">
                 <div class="w-2/4">
-                    <x-jet-label class="text-lg">Buscar preinscripto</x-jet-label>
-                    <x-jet-input type="text" name="" placeholder="Escriba para buscar" />
+                    <x-jet-label class="text-lg">Buscar preinscriptos</x-jet-label>
+                    <input type="text"
+                        class="px-4 py-1 w-4/5 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 filter-input"
+                        placeholder="Escriba para buscar" data-column="1" />
                 </div>
 
                 <div class="w-2/4">
                     <x-jet-label class="text-lg">Seleccionar Fecha</x-jet-label>
                     <form>
                         <select
-                            class="w-3/5 mx-auto py-2 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 filter-select">
+                            class="w-3/5 mx-auto py-1 px-2 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 filter-select">
                             <option value="">Todos</option>
-                            @foreach ($inscripts as $inscript)
-                                    <option value="">
-                                        {{ $inscript }}
+                            @foreach ($inscripts as $clave => $valor)
+                                    <option value="{{$clave}}">
+                                        {{ $valor }}
                                     </option>
                             @endforeach
+
                         </select>
                     </form>
                 </div>
@@ -38,9 +41,9 @@
                 id="inscripts-table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">PF_ID</th>
+                        {{-- <th scope="col">PF_ID</th> --}}
                         <th scope="col">DNI</th>
-                        <th scope="col">Usuario</th>
+                        <th scope="col">Preinscripto</th>
                         <th scope="col">Email</th>
                         <th scope="col">Estado</th>
                         <th scope="col">&nbsp;</th>
@@ -61,44 +64,25 @@
                 autoWidth: false,
                 processing: true,
                 serverSider: true,
-                ajax: '{!! route('PreinscriptdataTable') !!}',
-                columns: [{
-                        data: 'preinscripcion_fecha_id'
-                    },
-                    {
-                        data: 'dni'
-                    },
-                    {
-                        data: 'nombre'
-                    },
-                    {
-                        data: 'email'
-                    },
-                    {
-                        data: 'activo'
-                    },
-                    // { data: 'created_at' },
-                    {
-                        data: 'btn',
-                    },
-                ],
-                // merge
-                "columnDefs": [{
-                        "render": function(data, type, row) {
+                dom: "Bfrtip",
+                ajax: '{!! route('PreinscriptdataTable', $inscripts) !!}',
+                columns: [
+                    // { data: 'preinscripcion_fecha_id'},
+                    { data: 'dni'                    },
+                    {"render": function(data, type, row) {
+                            return row['nombre'] + " " + row['apellido'];
+                        },                 },
+                    // { data: 'apellido'               },
+                    { data: 'email'                  },
+                    { "render": function(data, type, row) {
                             if (row['activo'] == 1) {
-                                return "<span class='px-2 inline-flex text-sm leading-5 font-bold text-gray-900'>Activo</span>";
+                                return ["<span class='px-2 inline-flex text-sm leading-5 font-bold text-gray-900'>Aceptado</span>"];
                             } else {
                                 return "<span class='px-2 inline-flex text-sm leading-5 font-bold text-gray-400'>Pendiente</span>";
                             }
-                        },
-                        "targets": 4,
-                    },
-                    // {
-                    //     "visible": false,
-                    //     "targets": [5]
-                    // }
+                        },                           },
+                    { data: 'btn',                   },
                 ],
-
                 "pageLength": 10,
                 "dom": 'lrtip',
                 "language": {
