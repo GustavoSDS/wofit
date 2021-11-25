@@ -12,7 +12,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('dates', UserController::class);
     /* Routes from as inscriptos */
-    Route::resource('preinscripts', PreinscriptsController::class);
+    // Route::resource('preinscripts', PreinscriptsController::class);
+    Route::get('preinscripts', [PreinscriptsController::class,'index'])->name('preinscripts.index');
+    Route::get('preinscripts', [PreinscriptsController::class,'show'])->name('preinscripts.show');
 
     /* Routes from datatables in admin */
     Route::get('dataTableUSer', [UserController::class ,'dataTable'])->name('dataTableUser');
