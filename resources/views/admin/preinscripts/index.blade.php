@@ -41,7 +41,7 @@
                 id="inscripts-table">
                 <thead class="thead-dark">
                     <tr>
-                        {{-- <th scope="col">PF_ID</th> --}}
+                        <th scope="col">ID</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Preinscripto</th>
                         <th scope="col">Email</th>
@@ -56,7 +56,7 @@
     </div>
 @stop
 
-{{-- @section('js')
+@section('js')
     <script>
         $(document).ready(function() {
             var table = $('#inscripts-table').DataTable({
@@ -67,7 +67,7 @@
                 dom: "Bfrtip",
                 ajax: '{!! route('PreinscriptdataTable') !!}',
                 columns: [
-                    // { data: 'preinscripcion_fecha_id'},
+                    { data: 'id'},
                     { data: 'dni'                    },
                     {"render": function(data, type, row) {
                             return row['nombre'] + " " + row['apellido'];
@@ -121,4 +121,4 @@
             });
         });
     </script>
-@stop --}}
+@stop

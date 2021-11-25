@@ -103,7 +103,7 @@ class PreinscriptsController extends Controller
     // Function Datatables
     public function dataTable()
     {
-        return DataTables::of(Preinscripcion_inscripcion::select('id', 'preinscripcion_fecha_id', 'dni', 'nombre', 'apellido' , 'email', 'activo'))
+        return DataTables::of(Preinscripcion_inscripcion::select('id', 'dni', 'nombre', 'apellido' , 'email', 'activo'))
             ->addColumn('btn', 'admin.preinscripts.btn.btn')
             ->rawColumns(['btn'])
             ->toJson();
