@@ -25,7 +25,7 @@ class HomeController extends Controller
         $conditionMonth = Preinscripcion_fecha::where([['ano', '=', date("Y")],['mes', '=', date("m")] ,['activo', '=', 1]])
         ->orderBy('mes', 'desc')->first();
 
-        if ($conditionMonth && $conditionYear) {
+        if ($conditionMonth || $conditionYear) {
             if ($conditionMonth && $conditionYear) {
                 saveForm($conditionMonth['id'], $request);
 

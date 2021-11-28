@@ -14,15 +14,36 @@ class Preinscripcion_fecha extends Model
      * @var string[]
      */
     protected $casts = [
-    'created_at' => 'datetime:Y-m-d',
+        'created_at' => 'datetime:Y-m-d',
     ];
 
-    public function inscriptos(){
+    public function inscriptos()
+    {
         return $this->hasMany(Preinscripcion_inscripcion::class);
         // return $this->belongsTo('App\Models\Preinscripcion_inscripcion', 'preinscripcion_fecha_id', 'id');
     }
     public function getFullDateAttribute()
     {
-        return $this-> dia.'/'. $this->mes.'/'.$this->ano;
+        $cero = 0;
+        switch (strlen($this->dia)) {
+            case '1':
+                $dia = $cero . $this->dia;
+                break;
+        
+            default:
+                $dia = $this->dia;
+                break;
+        }
+        switch (strlen($this->mes)) {
+            case '1':
+                $mes = $cero . $this->mes;
+                break;
+        
+            default:
+                $mes = $this->mes;
+                break;
+        }
+
+        return $this->ano . '-' . $mes . '-' . $dia;
     }
 }

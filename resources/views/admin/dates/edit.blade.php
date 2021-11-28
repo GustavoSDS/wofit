@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('dates.update', $date->id) }}" method="POST" class="formularioActualizar">
+                <form action="{{ route('dates.update', $date->id) }}" method="POST" id="formUpdate">
                     @method('PUT')
                     @csrf
                     <h6 class="w-full text-gray-800 text-center text-base mb-8">
@@ -42,13 +42,9 @@
                         <div class="row mb-2">
                             <div class="mx-auto col-lg-4">
                                 <div class="form-group">
-                                    @php
-                                        $fech = $date->fulldate;
-                                    @endphp
-                                    <label class="form-control-label" for="date">Fecha: <span
-                                            class="font-normal text-sm">{{ $date->fulldate }}</span></label>
-                                    <input class="border rounded w-full py-2 px-3" type="date" value="{{ $fech }}"
-                                        name="date" required>
+                                    <label class="form-control-label" for="date">Fecha: </label>
+                                    <input class="border rounded w-full py-2 px-3" type="date" value="{{$date->fulldate}}" name="date"
+                                        required>
                                 </div>
                             </div>
                         </div>
@@ -57,8 +53,10 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="activo">Activo</label>
                                     <select class="form-control" name="activo" id="activo">
-                                        <option value="1">Si</option>
-                                        <option value="0">No</option>
+                                        <option value="{{ $date->activo == 1 ? '1' : '0' }}">
+                                            {{ $date->activo == 1 ? 'Si' : 'No' }}</option>
+                                        <option value="{{ $date->activo == 1 ? '0' : '1' }}">
+                                            {{ $date->activo == 1 ? 'No' : 'Si' }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -81,21 +79,9 @@
 @endsection
 
 @section('js')
-    @if (session('updated') == 'ok')
-        <script>
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Actualizado!',
-                text: 'Registro actualizado con éxito!',
-                showConfirmButton: false,
-                timer: 2100
-            })
-        </script>
-    @endif
 
     <script>
-        $('.formularioActualizar').submit(function(e) {
+        $('#formUpdate').submit(function(e) {
             e.preventDefault();
 
             Swal.fire({

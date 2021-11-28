@@ -147,3 +147,6 @@ input[type="checkbox"] {
     position: relative;
 }
 
+.display-none{
+    display: none;
+}

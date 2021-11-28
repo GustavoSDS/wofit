@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('dates.store') }}" method="POST">
+                <form action="{{ route('dates.store') }}" method="POST" id="formCreate">
                     @csrf
                     <h6 class="w-full text-gray-800 text-center text-base mb-8 ">Ingresa la información para crear un ciclo</h6>
                     <div class="pl-lg-4">
@@ -77,16 +77,24 @@
 @endsection
 
 @section('js')
-    @if (session('saved') == 'ok')
-        <script>
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Guardado!',
-                text: 'Registro creado con éxito!',
-                showConfirmButton: false,
-                timer: 2100
-            })
-        </script>
-    @endif
+<script>
+    $('#formCreate').submit(function(e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Desea crear este registro?',
+            // text: "Si lo actualiza no podrá recuperarlo!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, actualizar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+
+    });
+</script>
 @stop

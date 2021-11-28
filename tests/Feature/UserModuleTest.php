@@ -16,4 +16,11 @@ class UserModuleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    function it_load_page_post_form()
+    {
+        $response = $this->get('pre-inscripciones');
+
+        $response->assertStatus(200);
+    }
 }

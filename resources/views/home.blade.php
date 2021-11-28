@@ -19,7 +19,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
         </x-alert-form>
         <span class="flex -mx-3 mb-2 text-sm">Campos obligatorios <b class="text-red-500 ml-1"> * </b></span>
 
-        <form action="{{ route('preregistration.post') }}" method="POST">
+        <form action="{{ route('preregistration.post') }}" method="POST" name="formulario">
             @csrf
             {{ csrf_field() }}
             <div>
@@ -32,7 +32,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                     @enderror
                 </div>
                 <div class="block md:flex lg:flex -mx-3">
-                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-1 lg:mb-2">
                         <!-- Componente de blade que contiene estilos para los label text -->
                         <x-label for="nombre">Nombres</x-label>
                         </label>
@@ -47,7 +47,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                                 title="Obligatorio. Máximo 20 carácteres. Solo Letras." required />
                         </div>
                     </div>
-                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-1 lg:mb-2">
                         <x-label for="apellido">Apellidos</x-label>
                         <div class="flex">
                             <div class="class-icons">
@@ -60,7 +60,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                     </div>
                 </div>
                 <div class="block md:flex lg:flex -mx-3">
-                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-1 lg:mb-2">
                         <x-label for="dni">DNI </x-label>
 
                         <div class="flex">
@@ -78,7 +78,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                             </x-input-error>
                         @enderror
                     </div>
-                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-0 lg:mb-0">
+                    <div class="w-full md:w-2/4 lg:w-3/6 px-3 mb-3 md:mb-1 lg:mb-2">
                         <x-label for="telefono">Teléfono</x-label>
                         <div class="flex">
                             <div class="class-icons">
@@ -90,13 +90,9 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
                         </div>
                     </div>
                 </div>
-                <!-- Muestra una alerta de error despues de la validacion de los datos del formulario -->
-                <div class="w-2/4">
-
-                </div>
 
                 <div class="flex -mx-3">
-                    <div class="w-full px-3 mb-3 md:mb-5 lg:mb-5">
+                    <div class="w-full px-3  mb-3 md:mb-1 lg:mb-2">
                         <x-label for="email">Email</x-label>
                         <div class="flex">
                             <div class="class-icons">
@@ -156,7 +152,7 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
 
                 <div class="flex -mx-3">
                     <div class="flex items-center justify-center w-full px-3 mb-14">
-                        <button class="max-w-xs w-48 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:text-gray-900 bg-gradient-to-r from-blue-300 to-blue-400 hover:from-blue-400 hover:to-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in">
+                        <button type="submit" class="max-w-xs w-48 inline-flex items-center px-4 py-2 border border-gray-200 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:text-gray-900 bg-gradient-to-r from-blue-300 to-blue-400 hover:from-blue-400 hover:to-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in" value="submit">
                             <!-- Heroicon name: solid/check -->
                             <svg class="h-6 w-6 mr-2 text-gray-900" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -177,4 +173,5 @@ const horarios = ['8 a 9', '9 a 10', '14 a 15', '15 a 16', '16 a 17', '17 a 18',
             </div>
         </form>
     </x-registro-form>
+
 </x-app-layout>

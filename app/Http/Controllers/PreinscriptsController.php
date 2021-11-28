@@ -20,50 +20,21 @@ class PreinscriptsController extends Controller
     public function index()
     {
         $fechas = Preinscripcion_inscripcion::all();
-        foreach ($fechas as $clave => $valor) {
-            $fecha[$valor->fechas->id] = $valor->fechas->nombre;
+        foreach ($fechas as $valor) {
+            $fecha[$valor->preinscripcion_fecha_id] = $valor->fechas->nombre;
         }
 
         $fecha = array_unique($fecha);
 
-        return view('admin.preinscripts.index', [
-            'inscripts' => $fecha
-        ]);
+        // foreach ($fecha as $clave => $valor){
+        //     return [$clave ."=>".$valor];
+        // }
+
+         return view('admin.preinscripts.index', [
+             'inscripts' => $fecha
+         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $preinscript = Preinscripcion_inscripcion::all()->find($id);
-        // return $preinscript;
-        return view('admin.preinscripts.show', compact('preinscript'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,24 +57,31 @@ class PreinscriptsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $datos = $request->input('status');
+        $preinscript = Preinscripcion_inscripcion::findOrFail($id);
+        $preinscript->activo = $request->status;
+        $preinscript->save();
+
+        return redirect()->route('preinscripts.index', $id)->with('updated', 'ok');
     }
 
-    /**
-     * Remove the specified resource from storage.
+        /**
+     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function show($id)
     {
-        //
+        $preinscript = Preinscripcion_inscripcion::all()->find($id);
+        // return $preinscript;
+        return view('admin.preinscripts.show', compact('preinscript'));
     }
-
+    
     // Function Datatables
     public function dataTable()
     {
-        return DataTables::of(Preinscripcion_inscripcion::select('id', 'dni', 'nombre', 'apellido' , 'email', 'activo'))
+        return DataTables::of(Preinscripcion_inscripcion::select('id', 'preinscripcion_fecha_id', 'dni', 'nombre', 'apellido' , 'email', 'activo'))
             ->addColumn('btn', 'admin.preinscripts.btn.btn')
             ->rawColumns(['btn'])
             ->toJson();

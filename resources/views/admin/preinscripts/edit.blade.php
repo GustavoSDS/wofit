@@ -17,14 +17,14 @@
                     </div>
                     <div class="col text-right">
                         <div class="transform hover:scale-110 m-1 inline-block">
-                            <a href="{{ route('dates.index') }}"
+                            <a href="{{ route('preinscripts.index') }}"
                                 class="focus:outline-none text-white text-sm py-2 px-4 bg-gradient-to-r from-red-400 to-red-600">Volver</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('dates.update', $date->id) }}" method="POST" class="formularioActualizar">
+                <form action="{{ route('preinscripts.update', $date->id) }}" method="POST" id="formUpdate">
                     @method('PUT')
                     @csrf
                     <h6 class="w-full text-gray-800 text-center text-base mb-8">
@@ -75,17 +75,12 @@
                                 </div>
                             </div>
                             <div class="col-span-1 flex mb-2">
-                                <div class="flex mx-auto">
+                                <div class="flex gap-2 mx-auto justify-center items-center">
                                     <x-jet-label class="mrl2">Estado Preinscripto</x-jet-label>
                                     {{-- <x-jet-input class="w-4/5 text-center" value="{{$date->activo == 1 ? 'Aceptado' : 'Pendiente'}}" placeholder="{{ $date->activo ? 'Aceptado' : 'Pendiente'}}" /> --}}
-                                    <select name="" id="">
-                                        @if ($date->activo==1)
-                                            <option value="{{$date->activo}}">Aceptado</option>
-                                            <option value="0">Pendiente</option>
-                                        @else
-                                            <option value="1">Aceptado</option>
-                                            <option value="{{$date->activo}}">Pendiente</option>
-                                        @endif
+                                    <select name="status" id="">
+                                        <option value="{{$date->activo == 1 ? '1' : '0'}}">{{$date->activo == 1 ? 'Aceptado' : 'Pendiente'}}</option>
+                                        <option value="{{$date->activo == 1 ? '0' : '1'}}">{{$date->activo == 1 ? 'Pendiente' : 'Aceptado'}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -122,7 +117,7 @@
     @endif
 
     <script>
-        $('.formularioActualizar').submit(function(e) {
+        $('#formUpdate').submit(function(e) {
             e.preventDefault();
 
             Swal.fire({

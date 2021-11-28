@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Preinscripcion_fecha;
 use App\Models\Preinscripcion_inscripcion;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -49,20 +51,7 @@ class UserController extends Controller
 
         Preinscripcion_fecha::insert($datos);
 
-        return redirect()->route('dates.create')->with('saved', 'ok');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $date = Preinscripcion_fecha::findOrFail($id);
-
-        return view('admin.dates.show', compact('date'));
+        return redirect()->route('dates.index')->with('saved', 'ok');
     }
 
     /**
@@ -92,7 +81,7 @@ class UserController extends Controller
         $datos['activo'] = intval($request->input('activo'));
 
         Preinscripcion_fecha::where('id', '=', $id)->update($datos);
-        return redirect()->route('dates.edit', $id)->with('updated', 'ok');
+        return redirect()->route('dates.index', $id)->with('updated', 'ok');
     }
 
     /**
@@ -110,7 +99,7 @@ class UserController extends Controller
 
     public function dataTable()
     {
-        return DataTables::of(Preinscripcion_fecha::select('id', 'dia', 'mes', 'ano', 'nombre', 'activo'))
+        return DataTables::of(Preinscripcion_fecha::select('id', 'dia', 'mes', 'ano', 'nombre', 'activo','created_at'))
             ->editColumn('created_at', function (Preinscripcion_fecha $date) {
                 $inscript = 0;
                 foreach ($date->inscriptos as $key) {
