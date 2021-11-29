@@ -20,15 +20,12 @@ class PreinscriptsController extends Controller
     public function index()
     {
         $fechas = Preinscripcion_inscripcion::all();
+
         foreach ($fechas as $valor) {
             $fecha[$valor->preinscripcion_fecha_id] = $valor->fechas->nombre;
         }
 
         $fecha = array_unique($fecha);
-
-        // foreach ($fecha as $clave => $valor){
-        //     return [$clave ."=>".$valor];
-        // }
 
          return view('admin.preinscripts.index', [
              'inscripts' => $fecha
@@ -77,7 +74,7 @@ class PreinscriptsController extends Controller
         // return $preinscript;
         return view('admin.preinscripts.show', compact('preinscript'));
     }
-    
+
     // Function Datatables
     public function dataTable()
     {

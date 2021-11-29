@@ -13,9 +13,18 @@
             <div class="flex mt-4 px-3">
                 <div class="w-2/4">
                     <x-jet-label class="text-lg">Buscar preinscriptos</x-jet-label>
-                    <input type="text"
+                    <div class="w-3/4 flex">
+                        <input type="text"
                         class="px-4 py-1 w-4/5 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 filter-input"
-                        placeholder="Escriba para buscar" data-column="3" />
+                        placeholder="Escriba para buscar"/>
+                        <select id="datos" class="w-3/5 mx-auto py-1 px-2 rounded-lg border border-blue-500 text-center text-gray-700 placeholder-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="0">ID</option>
+                            <option value="2">DNI</option>
+                            <option value="3">Preinscripto</option>
+                            <option value="4">Email</option>
+                            <option value="5">Estado</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="w-2/4">
@@ -115,9 +124,8 @@
                             return row['nombre'] + " " + row['apellido'];
                         },
                     },
-                    // { data: 'apellido'               },
                     { data: 'email'},
-                    { 
+                    {
                         "render": function(data, type, row) {
                             if (row['activo'] == 1) {
                                 return ["<span class='px-2 inline-flex text-sm leading-5 font-bold text-gray-900'>Aceptado</span>"];
@@ -158,7 +166,7 @@
             });
             // text search
             $('.filter-input').keyup(function() {
-                table.column($(this).data('column'))
+                table.column($('#datos').val())
                     .search($(this).val())
                     .draw();
             });
@@ -169,5 +177,6 @@
                     .draw();
             });
         });
+
     </script>
 @stop
